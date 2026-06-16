@@ -107,12 +107,15 @@ nav.solid{background:rgba(11,38,19,.97);backdrop-filter:blur(16px)}
 .car-content{position:relative;z-index:2;min-height:82vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(56px,8vw,90px) 0 clamp(28px,4vw,48px)}
 .car-hdr{max-width:1280px;width:100%;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
 .car-controls{display:flex;align-items:center;justify-content:center;gap:18px;max-width:1280px;width:100%;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
-.c-btn{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);border:1px solid rgba(200,168,75,.3);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.c-btn:hover{background:rgba(200,168,75,.18);border-color:var(--gold);transform:scale(1.08)}
+.c-btn{width:46px;height:46px;border-radius:50%;background:rgba(0,0,0,.32);backdrop-filter:blur(8px);border:1px solid rgba(200,168,75,.35);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;z-index:10}
+.c-btn:hover{background:rgba(200,168,75,.22);border-color:var(--gold);transform:scale(1.08)}
+.c-arrow-l,.c-arrow-r{position:absolute;top:50%;transform:translateY(-50%);pointer-events:all}
+.c-arrow-l{left:clamp(10px,2.5vw,24px)}
+.c-arrow-r{right:clamp(10px,2.5vw,24px)}
 .c-dots{display:flex;gap:6px;align-items:center}
 .c-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.34);cursor:pointer;transition:all .26s;border:none;padding:0}
 .c-dot.on{background:var(--gold);width:18px;border-radius:2.5px}
-@media(max-width:768px){.c-btn{width:34px;height:34px;font-size:.8rem;background:rgba(0,0,0,.35)}}
+@media(max-width:768px){.c-btn{width:36px;height:36px;font-size:.8rem}}
 .c-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(255,255,255,.55);min-width:48px;text-align:center}
 .c-num em{color:var(--gold);font-style:normal}
 
@@ -306,12 +309,12 @@ body.en .hero-name-en{display:block}
   <div class="car-bg" id="touBgA"></div>
   <div class="car-bg" id="touBgB"></div>
   <div class="car-ov"></div>
+  <button class="c-btn c-arrow-l" data-car="tou" data-d="-1">&#8592;</button>
+  <button class="c-btn c-arrow-r" data-car="tou" data-d="1">&#8594;</button>
   <div class="car-content">
     <div class="car-controls">
-      <button class="c-btn" data-car="tou" data-d="-1">&#8592;</button>
       <div class="c-dots" id="touDots"></div>
       <span class="c-num"><em id="touCur">1</em> / <span id="touTot">1</span></span>
-      <button class="c-btn" data-car="tou" data-d="1">&#8594;</button>
     </div>
   </div>
 </section>
@@ -367,12 +370,12 @@ body.en .hero-name-en{display:block}
   <div class="car-bg" id="myBgA"></div>
   <div class="car-bg" id="myBgB"></div>
   <div class="car-ov"></div>
+  <button class="c-btn c-arrow-l" data-car="my" data-d="-1">&#8592;</button>
+  <button class="c-btn c-arrow-r" data-car="my" data-d="1">&#8594;</button>
   <div class="car-content">
     <div class="car-controls">
-      <button class="c-btn" data-car="my" data-d="-1">&#8592;</button>
       <div class="c-dots" id="myDots"></div>
       <span class="c-num"><em id="myCur">1</em> / <span id="myTot">1</span></span>
-      <button class="c-btn" data-car="my" data-d="1">&#8594;</button>
     </div>
   </div>
 </section>
@@ -419,7 +422,6 @@ body.en .hero-name-en{display:block}
 <div class="loc-item"><img src="места/IMG_20260120_131212.jpg" loading="lazy"></div>
 <div class="loc-item"><img src="места/IMG_20260206_124324_1.jpg" loading="lazy"></div>
 <div class="loc-item"><img src="места/IMG_20260418_073027.jpg" loading="lazy"></div>
-<div class="loc-item"><img src="места/IMG_20260519_170005.jpg" loading="lazy"></div>
 <div class="loc-item"><img src="места/IMG_20260520_085007.jpg" loading="lazy"></div>
 <div class="loc-item"><img src="места/IMG_20260615_123658.jpg" loading="lazy"></div>
     </div>
@@ -519,7 +521,7 @@ function makeCarousel(slides, bgAId, bgBId, dotsId, curId, totId, sectionId){
       el.style.cssText = 'display:flex';
       show.forEach(url=>{
         const d = document.createElement('div');
-        d.style.cssText = 'flex:1;height:100%;background-size:cover;background-position:center 25%;background-image:url("'+url+'")';
+        d.style.cssText = 'flex:1;height:100%;background-size:cover;background-position:left 25%;background-image:url("'+url+'")';
         el.appendChild(d);
       });
     }
@@ -550,7 +552,7 @@ function makeCarousel(slides, bgAId, bgBId, dotsId, curId, totId, sectionId){
   curEl.textContent = 1;
 
   section.addEventListener('click', e=>{
-    if(e.target.closest('.car-controls')) return;
+    if(e.target.closest('.car-controls') || e.target.closest('.c-btn')) return;
     const start = slides.slice(0,idx).reduce((s,a)=>s+a.length,0);
     lbOpen(lbFlat, start);
   });
