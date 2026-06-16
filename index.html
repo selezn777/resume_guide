@@ -538,7 +538,7 @@ function makeCarousel(slides, bgAId, bgBId, dotsId, curId, totId, sectionId){
     const w = window.innerWidth;
     const maxCols = w < 640 ? 1 : w < 960 ? 2 : imgs.length;
     const show = imgs.slice(0, maxCols);
-    const pos = imgs.length > 1 ? '25% 25%' : 'center 25%';
+    const pos = imgs.length > 1 ? '35% 25%' : 'center 25%';
     if(show.length === 1){
       el.style.cssText = 'background-image:url("'+show[0]+'");background-size:cover;background-position:'+pos;
     } else {
