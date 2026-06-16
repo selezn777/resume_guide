@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viktor Seleznev | Гид во Вьетнаме</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+button,a{outline:none;-webkit-tap-highlight-color:transparent}
+:root{
+  --g1:#0B2613;--g2:#0D1F10;
+  --gold:#C8A84B;--gold2:#E2C97E;
+  --teal:#0C8C7E;--teal2:#10B09F;
+  --white:#FFF;--muted:rgba(255,255,255,.58);--faint:rgba(255,255,255,.1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--g1);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,5vw,56px);transition:background .35s}
+nav.solid{background:rgba(11,38,19,.97);backdrop-filter:blur(16px)}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:clamp(.9rem,2vw,1.1rem);font-weight:700;color:var(--gold);letter-spacing:.04em;white-space:nowrap}
+.nav-links{display:flex;gap:clamp(12px,2.5vw,32px);list-style:none}
+.nav-links a{font-size:.65rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;gap:6px;flex-shrink:0}
+.lang-btn{font-family:'Inter',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(200,168,75,.3);background:transparent;color:rgba(255,255,255,.55);border-radius:1px;cursor:pointer;transition:all .2s}
+.lang-btn.on,.lang-btn:hover{background:var(--gold);color:var(--g1);border-color:var(--gold)}
+@media(max-width:680px){.nav-links{display:none}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:80px clamp(16px,6vw,80px) 60px}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:46% bottom;animation:bgzoom 24s ease-in-out infinite alternate;filter:brightness(.32) saturate(1.15)}
+@keyframes bgzoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(130deg,rgba(11,38,19,.95) 0%,rgba(11,38,19,.65) 52%,rgba(11,38,19,.25) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:clamp(32px,6vw,96px);align-items:center}
+.hero-eye{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal2);margin-bottom:18px}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,6.2rem);font-weight:700;line-height:.92;color:var(--white);margin-bottom:12px}
+.hero-name em{font-style:italic;background:linear-gradient(130deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-role{font-size:clamp(.72rem,.9vw,.84rem);font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:32px}
+.hero-rule{width:52px;height:1.5px;background:linear-gradient(90deg,var(--gold),var(--teal2));margin-bottom:28px}
+.hero-lead{font-size:clamp(.88rem,1.05vw,.96rem);color:rgba(255,255,255,.7);line-height:1.85;max-width:460px;font-weight:300;margin-bottom:36px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* BUTTONS - unified */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:0 28px;height:46px;min-width:clamp(160px,42vw,206px);border-radius:1px;cursor:pointer;border:none;transition:transform .22s,box-shadow .22s,background .22s;white-space:nowrap;line-height:1}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(130deg,var(--gold),var(--gold2));color:var(--g1)}
+.btn-gold:hover{box-shadow:0 8px 28px rgba(200,168,75,.38)}
+.btn-ghost{background:transparent;border:1px solid rgba(200,168,75,.4);color:var(--gold)}
+.btn-ghost:hover{background:rgba(200,168,75,.08);border-color:var(--gold)}
+
+/* HERO PHOTO COL */
+.hero-photo-col{display:flex;flex-direction:column;align-items:stretch;flex-shrink:0;width:clamp(190px,26vw,340px)}
+.hero-photo-wrap{position:relative}
+.hero-photo-glow{position:absolute;inset:-22px;border-radius:24px;background:linear-gradient(135deg,var(--gold),var(--teal2));filter:blur(34px);opacity:.38;z-index:0;animation:glowpulse 7s ease-in-out infinite alternate}
+@keyframes glowpulse{from{opacity:.26;transform:scale(1)}to{opacity:.5;transform:scale(1.07)}}
+.hero-photo-frame{position:relative;z-index:1;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px -18px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06)}
+.hero-photo{width:100%;display:block;filter:saturate(.93);transition:transform .6s ease}
+.hero-photo-wrap:hover .hero-photo{transform:scale(1.05)}
+.hero-photo-fade{position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(to top,var(--g1) 0%,rgba(11,38,19,.6) 55%,transparent 100%);pointer-events:none}
+.hero-bio{position:relative;z-index:2;margin-top:12px;padding:14px 18px 16px;background:rgba(6,20,10,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(200,168,75,.22);border-top:2px solid rgba(200,168,75,.55);border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.32)}
+.hero-bio-name{font-family:'Cormorant Garamond',serif;font-size:1.02rem;font-weight:700;color:var(--white);margin-bottom:4px;letter-spacing:.02em}
+.hero-bio-sub{font-size:.74rem;color:rgba(255,255,255,.58);line-height:1.55;font-weight:300}
+.hero-bio-sub strong{color:var(--gold);font-weight:600}
+@media(max-width:820px){
+  .hero-inner{grid-template-columns:1fr;gap:36px}
+  .hero-photo-col{width:clamp(160px,50vw,260px);margin:0 auto}
+  .hero-inner > div:first-child{order:2}
+  .hero-photo-col{order:1}
+}
+@media(max-width:480px){
+  .hero{padding:80px 16px 48px}
+  .hero-name{font-size:clamp(2.2rem,9vw,2.8rem)}
+  .hero-role{font-size:.62rem;letter-spacing:.1em}
+  .hero-lead{font-size:.84rem}
+}
+
+/* SECTIONS */
+.s{padding:clamp(56px,8vw,110px) clamp(16px,5vw,72px)}
+.si{max-width:1280px;margin:0 auto}
+.s-eye{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal2);margin-bottom:10px;display:block}
+.s-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.8vw,2.9rem);font-weight:700;line-height:1.15;color:var(--white);margin-bottom:clamp(32px,5vw,56px)}
+.s-h .g{background:linear-gradient(130deg,var(--gold),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,75,.18),transparent)}
+
+/* ABOUT */
+.about-bg{background:linear-gradient(180deg,var(--g1) 0%,var(--g2) 100%)}
+.knows-block{background:linear-gradient(135deg,rgba(12,140,126,.1),rgba(200,168,75,.05));border:1px solid rgba(200,168,75,.13);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:clamp(20px,3vw,36px) clamp(20px,4vw,44px);margin-bottom:clamp(32px,5vw,52px)}
+.knows-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.45rem);font-style:italic;color:var(--white);line-height:1.55}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px);align-items:start}
+@media(max-width:780px){.about-grid{grid-template-columns:1fr}}
+.about-text p{font-size:.92rem;color:var(--muted);line-height:1.88;margin-bottom:16px;font-weight:300}
+.about-text p:last-child{margin-bottom:0}
+.qual-row{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--faint)}
+.qual-row:last-child{border-bottom:none}
+.qual-line{width:2px;height:38px;flex-shrink:0;margin-top:3px;background:linear-gradient(180deg,var(--gold),var(--teal2));border-radius:1px}
+.qual-title{font-size:.78rem;font-weight:700;color:var(--gold);letter-spacing:.05em;margin-bottom:3px}
+.qual-desc{font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:300}
+
+/* CAROUSEL - photo as section background */
+.car-s{position:relative;min-height:82vh;overflow:hidden;cursor:pointer}
+.car-bg{position:absolute;inset:0;background-size:cover;background-position:center 25%;opacity:0;transition:opacity 1.1s ease}
+.car-bg.on{opacity:1}
+.car-ov{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(11,38,19,.1) 0%,transparent 25%,transparent 65%,rgba(11,38,19,.75) 100%)}
+.car-content{position:relative;z-index:2;min-height:82vh;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(56px,8vw,90px) 0 clamp(28px,4vw,48px)}
+.car-hdr{max-width:1280px;width:100%;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
+.car-controls{display:flex;align-items:center;justify-content:center;gap:18px;max-width:1280px;width:100%;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
+.c-btn{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);border:1px solid rgba(200,168,75,.3);color:var(--gold);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.c-btn:hover{background:rgba(200,168,75,.18);border-color:var(--gold);transform:scale(1.08)}
+.c-dots{display:flex;gap:6px;align-items:center}
+.c-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.34);cursor:pointer;transition:all .26s;border:none;padding:0}
+.c-dot.on{background:var(--gold);width:18px;border-radius:2.5px}
+@media(max-width:768px){.c-btn{display:none}}
+.c-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(255,255,255,.55);min-width:48px;text-align:center}
+.c-num em{color:var(--gold);font-style:normal}
+
+/* LOCATION MASONRY */
+.loc-bg{background:var(--g2)}
+.loc-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:680px){.loc-masonry{grid-template-columns:repeat(2,1fr)}}
+.loc-item{aspect-ratio:3/4;overflow:hidden;border-radius:3px;position:relative;cursor:pointer}
+.loc-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.loc-item:hover img{transform:scale(1.06)}
+
+/* EXPERIENCE */
+.exp-bg{background:var(--g1)}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.exp-card{background:rgba(255,255,255,.03);border:1px solid rgba(12,140,126,.13);border-top:2px solid transparent;border-radius:0 0 5px 5px;padding:28px 24px;transition:border-color .45s,background .45s,opacity .5s,transform .5s,box-shadow .5s;opacity:.5;transform:translateY(14px)}
+.exp-card.lit{border-top-color:var(--gold);background:rgba(255,255,255,.05);opacity:1;transform:translateY(0);box-shadow:0 10px 44px rgba(0,0,0,.22)}
+.exp-co{font-size:.62rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--teal2);margin-bottom:8px}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:var(--white);margin-bottom:5px;font-weight:600}
+.exp-loc{font-size:.7rem;color:rgba(255,255,255,.32);margin-bottom:14px}
+.exp-desc{font-size:.8rem;color:var(--muted);line-height:1.7}
+
+/* REVIEWS */
+.rev-bg{background:var(--g2)}
+.rev-carousel{overflow:hidden}
+.rev-track{display:flex;transition:transform .6s ease}
+.rev-slide{flex:0 0 100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:0 2px}
+.rev-card{background:rgba(255,255,255,.04);border:1px solid var(--faint);border-radius:5px;padding:24px;transition:border-color .25s}
+.rev-card:hover{border-color:rgba(200,168,75,.28)}
+.rev-stars{color:var(--gold);font-size:.82rem;letter-spacing:2px;margin-bottom:12px}
+.rev-text{font-size:.82rem;color:rgba(255,255,255,.66);line-height:1.75;margin-bottom:16px;font-style:italic;font-weight:300}
+.rev-author{font-size:.7rem;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase}
+.rev-where{font-size:.66rem;color:rgba(255,255,255,.28);margin-top:2px}
+
+/* CONTACT */
+.contact-bg{padding:clamp(80px,12vw,160px) clamp(16px,6vw,80px);position:relative;overflow:hidden;background:radial-gradient(ellipse 120% 80% at 50% 0%,rgba(12,140,126,.22) 0%,transparent 60%),linear-gradient(160deg,#041a0e 0%,#071e14 45%,#040e0a 100%)}
+.contact-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(200,168,75,.16) 0%,transparent 65%);pointer-events:none}
+.contact-inner{max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.contact-badge{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--teal2);border:1px solid rgba(12,140,126,.35);border-radius:20px;padding:5px 18px;margin-bottom:22px}
+.contact-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.05;background:linear-gradient(130deg,var(--white) 0%,var(--gold2) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px}
+.contact-sub{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.82;margin-bottom:44px;font-weight:300;max-width:500px;margin-left:auto;margin-right:auto}
+.contact-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-btns .btn,.contact-btns .btn{flex:1;min-width:0;max-width:226px}
+@media(max-width:540px){
+  .hero-btns,.contact-btns{flex-direction:column;align-items:center;gap:10px}
+  .hero-btns .btn,.contact-btns .btn{width:260px;max-width:min(260px,100%);height:50px;font-size:.72rem}
+}
+
+/* FOOTER */
+footer{background:#040d06;padding:18px clamp(16px,5vw,72px);text-align:center;border-top:1px solid var(--faint)}
+footer p{font-size:.64rem;color:rgba(255,255,255,.22);letter-spacing:.1em}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.97);flex-direction:column;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb-img{max-width:98vw;max-height:96vh;object-fit:contain;border-radius:3px;animation:lbin .24s ease}
+@keyframes lbin{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.lb-x{position:absolute;top:18px;right:24px;background:none;border:none;color:rgba(255,255,255,.55);font-size:1.7rem;cursor:pointer;line-height:1;transition:color .2s}
+.lb-x:hover{color:#fff}
+.lb-nb{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:background .2s}
+.lb-nb:hover{background:rgba(255,255,255,.14)}
+.lb-prev{left:16px}.lb-next{right:16px}
+
+/* LANG */
+[data-en]{display:none}
+body.en [data-ru]{display:none}
+body.en [data-en]{display:block}
+body.en span[data-en]{display:inline}
+body.en span[data-ru]{display:none}
+.hero-name-en{display:none}
+body.en .hero-name-ru{display:none}
+body.en .hero-name-en{display:block}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-name">
+    <span data-ru>Виктор Селезнёв</span>
+    <span data-en>Viktor Seleznev</span>
+  </div>
+<div class="nav-right">
+    <button class="lang-btn on" onclick="setLang('ru',this)">RU</button>
+    <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eye"><span data-ru>Профессиональный гид - Нячанг</span><span data-en>Professional Tour Guide - Nha Trang</span></span>
+      <h1 class="hero-name">
+        <span class="hero-name-ru">Виктор<br><em>Селезнёв</em></span>
+        <span class="hero-name-en">Viktor<br><em>Seleznev</em></span>
+      </h1>
+      <p class="hero-role"><span data-ru>Гид - Организатор туров - Менеджер</span><span data-en>Guide - Tour Organizer - Manager</span></p>
+      <div class="hero-rule"></div>
+      <p class="hero-lead" data-ru>Четыре года живу в сердце Вьетнама - знаю страну не по путеводителям, а изнутри. Тысячи довольных туристов, авторские маршруты, 50+ отзывов на Google Maps с оценкой 5&#9733;.</p>
+      <p class="hero-lead" data-en>Four years living in the heart of Vietnam - I know the country not from guidebooks, but from the inside. Thousands of happy tourists, original routes, 50+ five-star Google Maps reviews.</p>
+      <div class="hero-btns">
+        <a href="https://t.me/viktor_Vietnam" target="_blank" class="btn btn-gold">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+          Telegram
+        </a>
+        <a href="tel:+84383714638" class="btn btn-ghost">+84 383 714 638</a>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-glow"></div>
+        <div class="hero-photo-frame">
+        <img class="hero-photo" src="hero-photo.jpg" alt="Viktor Seleznev">
+        <div class="hero-photo-fade"></div>
+        </div>
+      </div>
+      <div class="hero-bio">
+        <div class="hero-bio-name">Viktor Seleznev</div>
+        <div class="hero-bio-sub">
+          <span data-ru><strong>28 лет</strong> - 4 года в Нячанге</span>
+          <span data-en><strong>28 years old</strong> - 4 years in Nha Trang</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="s about-bg" id="about">
+  <div class="si">
+    <div class="knows-block">
+      <p class="knows-quote" data-ru>"Я знаю Вьетнам изнутри - его историю, людей, скрытые места и живую культуру. Это то, что отличает меня от гида по путеводителю."</p>
+      <p class="knows-quote" data-en>"I know Vietnam from the inside - its history, people, hidden places and living culture. That is what sets me apart from a guidebook guide."</p>
+    </div>
+    <span class="s-eye"><span data-ru>О себе</span><span data-en>About me</span></span>
+    <div class="about-grid">
+      <div class="about-text">
+        <p data-ru>Меня зовут Виктор Селезнёв, мне 28 лет. Четыре года назад я приехал в Нячанг - и остался. За это время страна стала по-настоящему родной: я изучал её историю, культуру и традиции, жил в глубинке среди местного населения, занимался промышленным туризмом и видел жизнь Вьетнама такой, какой её не видит обычный турист.</p>
+        <p data-ru>Сегодня я профессиональный гид и менеджер для русскоязычных туристов. Более 100 выездов в Далат, авторские маршруты которыми пользуются ведущие компании, тысячи довольных клиентов и 50+ отзывов на Google Maps с оценкой 5&#9733;.</p>
+        <p data-ru>Я люблю историю и нахожу что-то интересное в каждом месте. Одинаково комфортно чувствую себя в море, в горах Далата и в переговорах с партнёрами.</p>
+        <p data-en>My name is Viktor Seleznev, I am 28. Four years ago I came to Nha Trang - and stayed. Over time this country became truly my home: I studied its history, culture and traditions, lived in the countryside among local people, and saw Vietnamese life as ordinary tourists never see it.</p>
+        <p data-en>Today I am a professional guide and manager for Russian-speaking tourists. 100+ Dalat day trips, original routes used by leading local companies, thousands of satisfied clients and 50+ five-star Google Maps reviews.</p>
+        <p data-en>I love history and find something interesting in every place. I am equally at home at sea, in the Dalat mountains or in negotiations with partners.</p>
+      </div>
+      <div>
+        <div class="qual-row">
+          <div class="qual-line"></div>
+          <div>
+            <div class="qual-title"><span data-ru>Авторские маршруты</span><span data-en>Original Routes</span></div>
+            <div class="qual-desc"><span data-ru>Разработал маршруты, которыми пользуются ведущие туркомпании Нячанга.</span><span data-en>Developed routes used by leading Nha Trang tour companies.</span></div>
+          </div>
+        </div>
+        <div class="qual-row">
+          <div class="qual-line"></div>
+          <div>
+            <div class="qual-title"><span data-ru>Тысячи клиентов</span><span data-en>Thousands of clients</span></div>
+            <div class="qual-desc"><span data-ru>Опыт работы с большими и малыми группами, семьями, корпоративными туристами.</span><span data-en>Experience with large and small groups, families, and corporate tourists.</span></div>
+          </div>
+        </div>
+        <div class="qual-row">
+          <div class="qual-line"></div>
+          <div>
+            <div class="qual-title"><span data-ru>Полный цикл услуг</span><span data-en>Full service cycle</span></div>
+            <div class="qual-desc"><span data-ru>Встреча в аэропорту, размещение, экскурсии, активности, консьерж, трансферы, продажи.</span><span data-en>Airport transfers, accommodation, tours, activities, concierge, sales.</span></div>
+          </div>
+        </div>
+        <div class="qual-row">
+          <div class="qual-line"></div>
+          <div>
+            <div class="qual-title"><span data-ru>Языки</span><span data-en>Languages</span></div>
+            <div class="qual-desc"><span data-ru>Русский - родной. Английский B1. Вьетнамский - базовый.</span><span data-en>Russian - native. English B1. Vietnamese - beginner.</span></div>
+          </div>
+        </div>
+        <div class="qual-row">
+          <div class="qual-line"></div>
+          <div>
+            <div class="qual-title"><span data-ru>Глубокое знание страны</span><span data-en>Deep country knowledge</span></div>
+            <div class="qual-desc"><span data-ru>4 года жизни во Вьетнаме, включая промышленный туризм и жизнь в глубинке.</span><span data-en>4 years living in Vietnam, including industrial tourism and life in rural areas.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOURISTS -->
+<section class="car-s" id="tourists" style="background:var(--g2)">
+  <div class="car-bg" id="touBgA"></div>
+  <div class="car-bg" id="touBgB"></div>
+  <div class="car-ov"></div>
+  <div class="car-content">
+    <div class="car-controls">
+      <button class="c-btn" data-car="tou" data-d="-1">&#8592;</button>
+      <div class="c-dots" id="touDots"></div>
+      <span class="c-num"><em id="touCur">1</em> / <span id="touTot">1</span></span>
+      <button class="c-btn" data-car="tou" data-d="1">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="s exp-bg" id="experience">
+  <div class="si">
+    <span class="s-eye"><span data-ru>Опыт работы</span><span data-en>Work Experience</span></span>
+    <h2 class="s-h"><span data-ru>Профессиональный <span class="g">путь</span></span><span data-en>Professional <span class="g">path</span></span></h2>
+    <div class="exp-grid" id="expGrid">
+      <div class="exp-card">
+        <div class="exp-co">Asia Mix Travel</div>
+        <div class="exp-role" data-ru>Гид-экскурсовод / Менеджер</div>
+        <div class="exp-role" data-en>Tour Guide / Manager</div>
+        <div class="exp-loc">Нячанг, Вьетнам</div>
+        <div class="exp-desc" data-ru>Проведение групповых и индивидуальных туров. Работа с партнёрами, отелями и магазинами. Разработка авторских экскурсионных программ. Консьерж-сервис для русскоязычных клиентов.</div>
+        <div class="exp-desc" data-en>Leading group and individual tours. Working with partners, hotels and shops. Developing original tour programs. Concierge service for Russian-speaking clients.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-co">РИЦ - Русский Информационный Центр</div>
+        <div class="exp-role" data-ru>Гид-экскурсовод / Консьерж</div>
+        <div class="exp-role" data-en>Tour Guide / Concierge</div>
+        <div class="exp-loc">Нячанг, Вьетнам</div>
+        <div class="exp-desc" data-ru>Туры в Далат, Южные и Северные острова. Более 100 выездов, тысячи довольных клиентов. Персональное сопровождение туристов, ответы на все вопросы.</div>
+        <div class="exp-desc" data-en>Tours to Dalat, Southern and Northern Islands. 100+ trips, thousands of happy clients. Personal accompaniment of tourists, answering all questions.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-co">Библио Глобус</div>
+        <div class="exp-role" data-ru>Туроператор / Встречающий</div>
+        <div class="exp-role" data-en>Tour Operator / Airport Rep</div>
+        <div class="exp-loc">Вьетнам</div>
+        <div class="exp-desc" data-ru>Встреча туристов в аэропорту, размещение в отелях, сопровождение групп. Координация с туроператорами и отельерами. Опыт работы со всей цепочкой туриндустрии.</div>
+        <div class="exp-desc" data-en>Airport meet-and-greet, hotel placement, group supervision. Coordination with tour operators and hoteliers. Experience across the full tourism chain.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-co">ЭкоВояж</div>
+        <div class="exp-role" data-ru>Гид - Экотуризм / Промышленный туризм</div>
+        <div class="exp-role" data-en>Guide - Eco & Industrial Tourism</div>
+        <div class="exp-loc">Вьетнам</div>
+        <div class="exp-desc" data-ru>Жизнь в глубинке Вьетнама, изучение народа и традиций в естественной среде. Разработка нестандартных маршрутов. Уникальный опыт, который сделал меня экспертом по стране.</div>
+        <div class="exp-desc" data-en>Living in rural Vietnam, studying local people and traditions. Developing off-the-beaten-path routes. Unique experience that made me a true country expert.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MY PHOTOS -->
+<section class="car-s" id="my-photos" style="background:var(--g1)">
+  <div class="car-bg" id="myBgA"></div>
+  <div class="car-bg" id="myBgB"></div>
+  <div class="car-ov"></div>
+  <div class="car-content">
+    <div class="car-controls">
+      <button class="c-btn" data-car="my" data-d="-1">&#8592;</button>
+      <div class="c-dots" id="myDots"></div>
+      <span class="c-num"><em id="myCur">1</em> / <span id="myTot">1</span></span>
+      <button class="c-btn" data-car="my" data-d="1">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="s rev-bg" id="reviews">
+  <div class="si">
+    <span class="s-eye"><span data-ru>Отзывы</span><span data-en>Reviews</span></span>
+    <h2 class="s-h"><span data-ru>Что говорят <span class="g">туристы</span></span><span data-en>What <span class="g">tourists</span> say</span></h2>
+    <div class="rev-carousel">
+      <div class="rev-track" id="revTrack">
+        <div class="rev-slide">
+          <div class="rev-card"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Недавно побывали в Далате с гидом Виктором - в полном восторге! Виктор внимательный, знающий, с отличным чувством юмора. Всё прошло комфортно, без спешки."</p><div class="rev-author">Nikeshka Sunny</div><div class="rev-where">Далат - Google Maps</div></div>
+          <div class="rev-card"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Ездили на южные острова, гид был у нас Виктор! Молодой, эрудированный, с хорошим чувством юмора - просто суперский гид! Было настолько душевно под солнцем!"</p><div class="rev-author">Марина Воробьёва</div><div class="rev-where">Южные острова - Google Maps</div></div>
+          <div class="rev-card"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Прекрасный гид Виктор очень подробно рассказал о Далате - истории, культуре, традициях! Программа составлена грамотно, на всё хватило времени!"</p><div class="rev-author">Елена Коротченко</div><div class="rev-where">Далат - Google Maps</div></div>
+        </div>
+        <div class="rev-slide">
+          <div class="rev-card"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Ездили с Виктором на 3 экскурсии: Далат, Северные и Южные острова. Всю дорогу рассказывает о стране, отвечает на любые вопросы."</p><div class="rev-author">Vladimir Larin</div><div class="rev-where">3 тура - Google Maps</div></div>
+          <div class="rev-card"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Виктор - профессионал своего дела, отвечал на все вопросы и сделал поездку незабываемой. Однозначно рекомендую! 10/10."</p><div class="rev-author">Reborn</div><div class="rev-where">Далат - Google Maps</div></div>
+          <div class="rev-card"><div class="rev-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="rev-text">"Через 6 лет вернулись в Нячанг. Съездили на Южные острова с гидом Виктором - самые шикарные воспоминания и от мест, и от гида, и от компании!"</p><div class="rev-author">Наталия Давыденко</div><div class="rev-where">Южные острова - Google Maps</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="car-controls" style="margin-top:28px">
+      <button class="c-btn" data-car="rev" data-d="-1">&#8592;</button>
+      <div class="c-dots" id="revDots"></div>
+      <span class="c-num"><em id="revCur">1</em> / <span id="revTot">2</span></span>
+      <button class="c-btn" data-car="rev" data-d="1">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOCATIONS -->
+<section class="s loc-bg" id="locations">
+  <div class="si">
+    <div class="loc-masonry" id="locGrid">
+<div class="loc-item"><img src="места/IMG_20241003_112549.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20241118_130219_edit_66323.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260112_173359.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260120_131212.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260206_124324_1.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260418_073027.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260519_170005.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260520_085007.jpg" loading="lazy"></div>
+<div class="loc-item"><img src="места/IMG_20260615_123658.jpg" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section class="contact-bg" id="contact">
+  <div class="contact-inner">
+    <span class="s-eye" style="display:block;margin-bottom:10px"><span data-ru>Контакты</span><span data-en>Contact</span></span>
+    <h2 class="contact-h"><span data-ru>Открыт к новым<br>предложениям</span><span data-en>Open to new<br>opportunities</span></h2>
+    <p class="contact-sub" data-ru>Ищу позицию, где мой опыт работы с туристами, знание страны и навыки организации принесут реальную пользу. Работаю ответственно, долгосрочно, нацелен на результат.</p>
+    <p class="contact-sub" data-en>Looking for a position where my experience with tourists, country knowledge and organizational skills will bring real value. I work responsibly, long-term, focused on results.</p>
+    <div class="contact-btns">
+      <a href="https://t.me/viktor_Vietnam" target="_blank" class="btn btn-gold">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Telegram
+      </a>
+      <a href="tel:+84383714638" class="btn btn-ghost">+84 383 714 638</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Нячанг, 2026</p>
+</footer>
+
+<div class="lb" id="lb">
+  <button class="lb-x" onclick="lbClose()">&#10005;</button>
+  <button class="lb-nb lb-prev" onclick="lbMove(-1)">&#8592;</button>
+  <img id="lbImg" src="" alt="" class="lb-img">
+  <button class="lb-nb lb-next" onclick="lbMove(1)">&#8594;</button>
+</div>
+
+<script>
+function setLang(l,btn){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.body.classList.toggle('en',l==='en');
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('solid',window.scrollY>50);
+});
+
+const MY_SLIDES=[
+["Я/IMG_20251211_153716.jpg","Я/IMG_20260409_193906_2.jpg","Я/IMG_20260419_094827.jpg"],
+["Я/IMG_20260509_102509.jpg","Я/IMG_20260524_215305.jpg","Я/IMG_20260615_123548.jpg"],
+["Я/IMG_20260318_072012.jpg"]
+];
+const TOU_SLIDES=[
+["туристы/IMG-20251215-WA0008.jpg","туристы/IMG_20250917_164539.jpg","туристы/IMG_20251128_114406.jpg"],
+["туристы/IMG_20260214_171959.jpg","туристы/IMG_20260228_140711.jpg","туристы/IMG_20260228_140930.jpg"],
+["туристы/IMG_20260319_141023.jpg","туристы/IMG_20260519_163222.jpg"],
+["туристы/IMG_20260520_160520.jpg","туристы/IMG_20260526_070637.jpg"],
+["туристы/IMG_20260410_074926.jpg"],
+["туристы/IMG_20260410_155135.jpg"],
+["туристы/IMG_20260418_080353.jpg"]
+];
+
+function makeCarousel(slides, bgAId, bgBId, dotsId, curId, totId, sectionId){
+  const bgs = [document.getElementById(bgAId), document.getElementById(bgBId)];
+  const section = document.getElementById(sectionId);
+  const dotsEl = document.getElementById(dotsId);
+  const curEl  = document.getElementById(curId);
+  const totEl  = document.getElementById(totId);
+  const n = slides.length;
+  const lbFlat = slides.flat();
+  let idx = 0, cur = 0, timer = null;
+
+  totEl.textContent = n;
+  slides.forEach((s,i)=>{
+    const dot = document.createElement('button');
+    dot.className = 'c-dot';
+    dot.addEventListener('click', ()=>go(i, true));
+    dotsEl.appendChild(dot);
+  });
+
+  function setPanel(pi, imgs){
+    const el = bgs[pi];
+    el.innerHTML = '';
+    const w = window.innerWidth;
+    const maxCols = w < 640 ? 1 : w < 960 ? 2 : imgs.length;
+    const show = imgs.slice(0, maxCols);
+    if(show.length === 1){
+      el.style.cssText = 'background-image:url("'+show[0]+'");background-size:cover;background-position:center 25%';
+    } else {
+      el.style.cssText = 'display:flex';
+      show.forEach(url=>{
+        const d = document.createElement('div');
+        d.style.cssText = 'flex:1;height:100%;background-size:cover;background-position:center 25%;background-image:url("'+url+'")';
+        el.appendChild(d);
+      });
+    }
+  }
+
+  function render(){
+    const next = 1-cur;
+    setPanel(next, slides[idx]);
+    bgs[next].classList.add('on');
+    bgs[cur].classList.remove('on');
+    cur = next;
+    dotsEl.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
+    curEl.textContent = idx+1;
+  }
+
+  const NORMAL = 6750;
+  let nextSlow = false;
+  function go(i, manual){ idx=((i%n)+n)%n; render(); resetTimer(!!manual); }
+  function startTimer(){
+    if(nextSlow){ nextSlow=false; timer=setTimeout(()=>go(idx+1,false), NORMAL*2); }
+    else { timer=setInterval(()=>go(idx+1,false), NORMAL); }
+  }
+  function resetTimer(manual){ clearTimeout(timer); clearInterval(timer); nextSlow=manual; startTimer(); }
+
+  setPanel(cur, slides[0]);
+  bgs[cur].classList.add('on');
+  dotsEl.querySelectorAll('.c-dot')[0].classList.add('on');
+  curEl.textContent = 1;
+
+  section.addEventListener('click', e=>{
+    if(e.target.closest('.car-controls')) return;
+    const start = slides.slice(0,idx).reduce((s,a)=>s+a.length,0);
+    lbOpen(lbFlat, start);
+  });
+
+  let ts=0;
+  section.addEventListener('touchstart',e=>{ts=e.touches[0].clientX},{passive:true});
+  section.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-ts;
+    if(Math.abs(dx)>40) go(dx<0?idx+1:idx-1, true);
+  });
+
+  startTimer();
+  return { go, getIdx:()=>idx, slides, n };
+}
+
+function makeRevCarousel(trackId, dotsId, curId, totId){
+  const track = document.getElementById(trackId);
+  const dotsEl = document.getElementById(dotsId);
+  const curEl = document.getElementById(curId);
+  const totEl = document.getElementById(totId);
+  const n = track.children.length;
+  let idx = 0, timer = null;
+
+  totEl.textContent = n;
+  for(let i=0;i<n;i++){
+    const dot = document.createElement('button');
+    dot.className = 'c-dot';
+    dot.addEventListener('click', ()=>go(i));
+    dotsEl.appendChild(dot);
+  }
+
+  function render(){
+    track.style.transform = 'translateX(-' + (idx*100) + '%)';
+    dotsEl.querySelectorAll('.c-dot').forEach((d,i) => d.classList.toggle('on', i===idx));
+    curEl.textContent = idx + 1;
+  }
+
+  function go(i){ idx = ((i % n) + n) % n; render(); resetTimer(); }
+  function startTimer(){ timer = setInterval(()=>go(idx+1), 6750); }
+  function resetTimer(){ clearInterval(timer); startTimer(); }
+
+  render();
+
+  let ts = 0;
+  track.parentElement.addEventListener('touchstart', e=>{ts=e.touches[0].clientX},{passive:true});
+  track.parentElement.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - ts;
+    if(Math.abs(dx) > 40) go(dx < 0 ? idx+1 : idx-1);
+  });
+
+  startTimer();
+  return { go, getIdx:()=>idx };
+}
+
+let CARS = {};
+window.addEventListener('load',()=>{
+  document.getElementById('heroBg').style.backgroundImage = 'url("hero-bg.jpg")';
+  CARS.my = makeCarousel(MY_SLIDES,'myBgA','myBgB','myDots','myCur','myTot','my-photos');
+  CARS.tou = makeCarousel(TOU_SLIDES,'touBgA','touBgB','touDots','touCur','touTot','tourists');
+  CARS.rev = makeRevCarousel('revTrack','revDots','revCur','revTot');
+});
+
+document.querySelectorAll('.c-btn[data-car]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const car = CARS[btn.dataset.car];
+    if(car) car.go(car.getIdx() + parseInt(btn.dataset.d), true);
+  });
+});
+
+// Exp scroll animation
+document.addEventListener('DOMContentLoaded',()=>{
+  const cards = document.querySelectorAll('.exp-card');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i = Array.from(cards).indexOf(e.target);
+        setTimeout(()=>e.target.classList.add('lit'), i*160);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  cards.forEach(c=>obs.observe(c));
+});
+
+// Lightbox
+let lbSrc=[], lbIdx=0;
+function lbOpen(slides, i){
+  lbSrc=slides; lbIdx=i;
+  document.getElementById('lbImg').src=slides[i];
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function lbClose(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbMove(d){
+  lbIdx=((lbIdx+d+lbSrc.length)%lbSrc.length);
+  document.getElementById('lbImg').src=lbSrc[lbIdx];
+}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)lbClose()});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lb').classList.contains('open'))return;
+  if(e.key==='ArrowLeft')lbMove(-1);
+  if(e.key==='ArrowRight')lbMove(1);
+  if(e.key==='Escape')lbClose();
+});
+
+// Location photos lightbox
+window.addEventListener('load',()=>{
+  const locImgs = Array.from(document.querySelectorAll('#locGrid img'));
+  const locSrcs = locImgs.map(img=>img.src);
+  locImgs.forEach((img,i)=>{
+    img.parentElement.addEventListener('click', ()=>lbOpen(locSrcs, i));
+  });
+});
+</script>
+</body>
+</html>
