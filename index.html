@@ -563,7 +563,13 @@ function makeCarousel(slides, bgAId, bgBId, dotsId, curId, totId, sectionId){
 
   const NORMAL = 6750;
   function go(i){ idx=((i%n)+n)%n; render(); }
-  function startTimer(){ timer=setInterval(()=>go(idx+1), NORMAL); }
+  function startTimer(){ if(!timer) timer=setInterval(()=>go(idx+1), NORMAL); }
+  function stopTimer(){ clearInterval(timer); timer=null; }
+
+  const obs = new IntersectionObserver(entries=>{
+    entries[0].isIntersecting ? startTimer() : stopTimer();
+  },{threshold:0.25});
+  obs.observe(section);
 
   setPanel(cur, slides[0]);
   bgs[cur].classList.add('on');
@@ -583,7 +589,6 @@ function makeCarousel(slides, bgAId, bgBId, dotsId, curId, totId, sectionId){
     if(Math.abs(dx)>40) go(dx<0?idx+1:idx-1);
   });
 
-  startTimer();
   return { go, getIdx:()=>idx, slides, n };
 }
 
@@ -610,7 +615,14 @@ function makeRevCarousel(trackId, dotsId, curId, totId){
   }
 
   function go(i){ idx = ((i % n) + n) % n; render(); }
-  function startTimer(){ timer = setInterval(()=>go(idx+1), 6750); }
+  function startTimer(){ if(!timer) timer = setInterval(()=>go(idx+1), 6750); }
+  function stopTimer(){ clearInterval(timer); timer = null; }
+
+  const revSection = track.closest('section');
+  const obs = new IntersectionObserver(entries=>{
+    entries[0].isIntersecting ? startTimer() : stopTimer();
+  },{threshold:0.25});
+  obs.observe(revSection);
 
   render();
 
@@ -621,7 +633,6 @@ function makeRevCarousel(trackId, dotsId, curId, totId){
     if(Math.abs(dx) > 40) go(dx < 0 ? idx+1 : idx-1);
   });
 
-  startTimer();
   return { go, getIdx:()=>idx };
 }
 
